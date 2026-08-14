@@ -1,0 +1,1951 @@
+/* Your original CSS with added improvements */
+
+/* Basic styling for demonstration */
+body {
+  font-family: Garamond, serif;
+  margin: 1px;
+  padding: 5px;
+  line-height: 1.25;
+  background-color: #f5f5f4;
+}
+
+/* STICKY HEADER STYLES */
+.sticky-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #e0e0e0;
+  z-index: 1000;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+  padding: 0.75rem 0;
+}
+
+.sticky-header.sticky-active {
+  transform: translateY(0);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  gap: 2rem;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.header-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.header-brand {
+  font-family: "Cinzel", serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #530306;
+  letter-spacing: 1px;
+}
+
+.search-container {
+  flex: 1;
+  max-width: 400px;
+  position: relative;
+}
+
+.enhanced-search-form {
+  position: relative;
+  width: 100%;
+}
+
+.search-input-container {
+  display: flex;
+  align-items: center;
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 25px;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-input-container:focus-within {
+  border-color: #530306;
+  box-shadow: 0 0 0 3px rgba(83, 3, 6, 0.1);
+}
+
+.search-input-container input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+  background: transparent;
+}
+
+.search-button {
+  background: #530306;
+  border: none;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background: #7a263a;
+}
+
+.search-icon {
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) invert(1);
+}
+
+.autocomplete-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+  display: none;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.autocomplete-item {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.2s ease;
+}
+
+.autocomplete-item:hover {
+  background-color: #f8f8f8;
+}
+
+.autocomplete-item:last-child {
+  border-bottom: none;
+}
+
+.header-nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.header-nav-link {
+  color: #333;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.header-nav-link:hover {
+  color: #530306;
+}
+
+.header-nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #530306;
+  transition: width 0.3s ease;
+}
+
+.header-nav-link:hover::after {
+  width: 100%;
+}
+
+/* BACK TO TOP BUTTON STYLES */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: #530306;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(83, 3, 6, 0.3);
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  z-index: 999;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: #7a263a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(83, 3, 6, 0.4);
+}
+
+.back-to-top svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* FILTER SECTION STYLES */
+.filter-section {
+  background: #f8f8f8;
+  padding: 1.5rem 0;
+  margin: 2rem 0;
+  border-radius: 8px;
+}
+
+.filter-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.filter-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #530306;
+  font-size: 1.5rem;
+}
+
+.filter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: end;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filter-group label {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.filter-select {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: white;
+  font-size: 0.9rem;
+  min-width: 120px;
+  cursor: pointer;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: #530306;
+  box-shadow: 0 0 0 2px rgba(83, 3, 6, 0.1);
+}
+
+.clear-filters-btn {
+  padding: 0.5rem 1rem;
+  background: #530306;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.clear-filters-btn:hover {
+  background: #7a263a;
+}
+
+/* SEARCH RESULTS STYLES */
+.search-results {
+  margin-bottom: 2rem;
+}
+
+.search-results h3 {
+  color: #530306;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.no-results {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  padding: 2rem;
+  background: #f8f8f8;
+  border-radius: 8px;
+}
+
+/* ENHANCED PRODUCT STYLES */
+.product-details {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 0.25rem;
+}
+
+/* RESPONSIVE DESIGN FOR NEW FEATURES */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+
+  .search-container {
+    max-width: 100%;
+  }
+
+  .header-nav {
+    gap: 1rem;
+  }
+
+  .filter-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-group {
+    width: 100%;
+  }
+
+  .filter-select {
+    min-width: 100%;
+  }
+
+  .back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sticky-header {
+    padding: 0.5rem 0;
+  }
+
+  .header-brand {
+    font-size: 1rem;
+  }
+
+  .header-logo {
+    width: 35px;
+    height: 35px;
+  }
+
+  .search-input-container input {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.8rem;
+  }
+
+  .search-button {
+    padding: 0.6rem 0.8rem;
+  }
+}
+
+.container {
+  max-width: 100%; /* Optional: Limit container width */
+  margin: 5px; /* Center the container */
+  background-color: transparent;
+  padding: 5px;
+  border: 0px solid #ddd;
+  overflow: auto; /* Add this to clear floats */
+}
+
+/* Clearfix to contain floats */
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Column Styling - UPDATED FOR COMBINED DESIGN */
+.sidebar-column,
+.main-content-column,
+.right-column {
+  float: left; /* Float columns to the left */
+  box-sizing: border-box; /* Include padding and border in width calculations */
+  margin-bottom: 2px; /* Add some space between rows */
+  height: auto; /* Allow height to adjust based on content */
+  padding: 0px;
+  box-sizing: border-box; /* Crucial for width calculations */
+  border: 1px solid #ffffff;
+  margin-bottom: 2px; /* Add some space if columns stack */
+  background-color: rgb(255, 255, 255);
+}
+
+/* Specific widths for different column sizes - UPDATED */
+.sidebar-column {
+  width: 18%; /* Sidebar for navigation */
+  margin-right: 1%;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+}
+
+/* UPDATED SIDEBAR STYLING - BURGUNDY DESIGN FROM SECOND IMAGE */
+.sidebar-column h2 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5rem;
+}
+
+/* Style the details/toggle container - BURGUNDY BUTTONS */
+.sidebar-column details {
+  margin-bottom: 0.5rem;
+  border: none;
+  background: transparent;
+}
+
+/* Style the summary (toggle button) - BURGUNDY DESIGN */
+.sidebar-column summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.75rem 1rem;
+  background: #530306; /* Your original burgundy color */
+  color: #fff;
+  border: none;
+  outline: none;
+  transition: background 0.2s, box-shadow 0.2s;
+  user-select: none;
+  margin-bottom: 0.25rem;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-column summary:hover,
+.sidebar-column details[open] summary {
+  background: #7a263a; /* Your original hover color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.sidebar-column summary:hover {
+  color: #ffffff;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.6), 0 0 12px rgba(255, 255, 255, 0.4), 0 0 18px rgba(255, 255, 255, 0.2);
+  animation: glowPulse 1.8s infinite ease-in-out;
+}
+
+/* Arrow styling — glow effect */
+.arrow {
+  color: #ffffff;
+  font-size: 12px;
+  margin-left: 6px;
+  transition: text-shadow 0.4s ease;
+}
+
+.footer-link a:hover .arrow {
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.5), 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+/* Pulse animation */
+@keyframes glowPulse {
+  0% {
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+  }
+  50% {
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+  }
+  100% {
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+  }
+}
+
+/* Style the list inside the toggle - CLEAN DESIGN */
+.sidebar-column ul {
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  margin: 0;
+  background: transparent;
+  border-left: 2px solid #eee;
+  margin-left: 0.75rem;
+}
+
+.sidebar-column li {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0.25rem;
+  list-style-type: none;
+  position: relative;
+}
+
+.sidebar-column li:before {
+  content: "•";
+  color: #530306;
+  font-weight: bold;
+  position: absolute;
+  left: -1rem;
+}
+
+/* Remove default arrow for summary */
+.sidebar-column summary::-webkit-details-marker,
+.sidebar-column summary::marker {
+  display: none;
+}
+
+.sidebar-column ul li a {
+  color: #666;
+  cursor: pointer;
+  transition: color 0.2s;
+  text-decoration: none;
+}
+.sidebar-column ul li a:hover {
+  color: #530306;
+}
+
+.main-content-column {
+  width: 54%; /* Reduced from 56% to balance with ads column */
+  max-width: 100%;
+  background-color: white;
+  margin-right: 1%;
+  border: 1px solid #ddd;
+  padding: 10px;
+  padding-top: 20px; /* Add top padding for better alignment */
+}
+
+.right-column {
+  width: 25%; /* Right column for UNICEF ad */
+  background-color: transparent;
+  border: 0px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Add consistent spacing between ads */
+}
+
+/* PRODUCT GRID STYLES - FROM FIRST IMAGE STRUCTURE */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columns like in first image */
+  gap: 15px;
+  padding: 10px;
+}
+
+.product-grid iMG {
+  height: 100px; /* Set a fixed height for product images */
+}
+
+.product-item {
+  border: 1px solid #eee;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  background: #fff;
+  text-align: center;
+}
+
+.product-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.product-item img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  display: block;
+}
+
+.product-info {
+  padding: 8px;
+}
+
+.product-title a {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+  color: #333;
+  text-decoration: none;
+}
+
+.product-title a:hover {
+  color: #8b1538; /* Burgundy color on hover */
+  text-decoration: underline;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+}
+
+.product-title a:active {
+  color: #530306; /* Darker burgundy on click */
+}
+
+.product-price {
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin: 0;
+  color: #530306;
+}
+
+/* UNICEF AD STYLES - REDUCED HEIGHT ONLY */
+.unicef-ad {
+  background: #ffffff;
+  border: 2px solid #530306;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 0px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 92%; /* keep full width of parent */
+  min-height: 363px; /* reduced from 400px */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  position: relative;
+}
+
+.our-team-title a:hover {
+  color: #8b1538; /* Burgundy color on hover */
+  text-decoration: underline;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+}
+
+.our-team-title a {
+  font-weight: 600;
+  margin: 0 0 4px 0;
+  color: #333;
+  text-decoration: none;
+}
+
+.product-title a:active {
+  color: #530306; /* Darker burgundy on click */
+}
+
+.ad-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.ad-label {
+  font-size: 10px;
+  font-weight: bold;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.unicef-logo {
+  height: 20px;
+  width: auto;
+}
+
+.unicef-campaign-image {
+  width: 100%;
+  height: 100px; /* reduced from 150px */
+  object-fit: cover;
+  border: none;
+  border-radius: 0;
+  margin: 0;
+}
+
+.unicef-content {
+  padding: 10px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.unicef-content h3 {
+  font-size: 14px;
+  font-weight: bold;
+  color: #1a1a1a;
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+}
+
+.unicef-content p {
+  font-size: 12px;
+  color: #4a4a4a;
+  line-height: 1.4;
+  margin: 0 0 10px 0;
+}
+
+.ad-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.ad-stats span {
+  font-size: 11px;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.unicef-cta-button {
+  background: #530306;
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 12px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  margin-bottom: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.unicef-cta-button:hover {
+  background: #7a263a;
+  transform: translateY(-1px);
+}
+
+.ad-disclaimer {
+  font-size: 10px !important;
+  color: #888 !important;
+  margin: 0 !important;
+  text-align: center;
+  font-style: italic;
+}
+
+/* Make the last UNICEF ad align with product grid position */
+.unicef-ad:last-child {
+  min-height: 250px;
+  margin-bottom: 0;
+  margin-top: 0px;
+}
+
+
+/* Responsive adjustments for ads */
+@media (max-width: 768px) {
+  .unicef-ad {
+    min-height: 220px;
+  }
+
+  .unicef-campaign-image {
+    height: 80px;
+  }
+
+  .unicef-content h3 {
+    font-size: 13px;
+  }
+
+  .unicef-content p {
+    font-size: 11px;
+  }
+}
+
+.unicef-image {
+  width: 100%;
+  height: auto;
+  max-height: 100px;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.unicef-ad {
+  text-align: center;
+  padding: 1rem;
+}
+.unicef-ad h2 {
+  background-color: #b10909;
+  border-radius: 4px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/*.unicef-content h3 {
+  text-shadow: 1px 3px 0 #612626, -30px -40px 20px rgba(206, 89, 55, 0);
+  text-shadow: #ff2d95 0px 0px 20px, -30px -40px 20px rgba(206, 89, 55, 0);
+  color: #ffffff;
+  background: transparent;
+} */
+
+.unicef-link {
+  color: #dab6b6;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.unicef-link:hover {
+  color: whitesmoke;
+  text-decoration: underline;
+}
+
+.clueless-title {
+  font-family: Georgia, serif;
+  font-size: 30px;
+  letter-spacing: 2px;
+  word-spacing: 2px;
+  color: #ffffff;
+  text-shadow: 0 0 4px #ffffff, 2px 2px 2px rgba(206, 89, 55, 0);
+  text-shadow: 1px 2px 0 #969696, 1px 6px 5px #c96f6f;
+  color: #ffffff;
+}
+
+.clueless-carousel {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.clueless-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.clueless-item img {
+  width: 100px;
+  height: 200px;
+  margin: 0.5rem 0;
+  border: 2px solid white;
+  border-radius: 6px;
+  background-color: white;
+  box-shadow: 0 0 8px rgb(190, 60, 173);
+}
+
+.clueless-item button,
+.clueless-action button {
+  background-color: rgb(99, 36, 36);
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  margin: 4px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+  border: 3px double #cfa5a5;
+}
+
+.clueless-item button:hover,
+.clueless-action button:hover {
+  background-color: #994848;
+  transform: scale(1.05);
+}
+
+@keyframes pulsateGlow {
+  0% {
+    box-shadow: 0 0 8px rgba(233, 186, 186, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 18px rgba(179, 135, 135, 0.9);
+  }
+  100% {
+    box-shadow: 0 0 8px rgba(219, 206, 206, 0.6);
+  }
+}
+
+.clueless-action {
+  margin-top: 1.5rem;
+}
+
+.clueless-action button {
+  transition: background-color 0.3s ease;
+  animation: pulsateGlow 2s infinite;
+}
+
+.clueless-selector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #2a0101;
+  padding: 2rem 1rem 3rem;
+  margin-top: 0.5rem;
+  border: 5px double #ffffff;
+  border-radius: 12px;
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  color: white;
+  min-height: 500px;
+  -webkit-box-shadow: inset 0px 0px 33px 5px #5a2626, inset 0px 0px 33px 5px #6e0000;
+  box-shadow: inset 0px 0px 33px 5px #5e2c2c, inset 0px 0px 33px 5px #6e0000;
+}
+
+/* NEW FOOTER STYLES - EXACT REFERENCE STRUCTURE */
+.main-footer {
+  margin-top: 3rem;
+  background-color: #fff;
+}
+
+/* Discover Something New Section - EXACT IMAGE STRUCTURE */
+.discover-section {
+  background: linear-gradient(135deg, #e0e0e0 0%, #d0d0d0 100%);
+  padding: 2rem 0;
+}
+
+.discover-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  font-family: Georgia, serif;
+}
+
+.discover-content {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  min-height: 250px;
+}
+
+.met-gala-image {
+  width: 350px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 0;
+  flex-shrink: 0;
+}
+
+.discover-article-box {
+  background: rgb(139, 21, 56, 0.75);
+  color: white;
+  padding: 2rem;
+  border-radius: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  font-style: georgia, serif;
+}
+
+.discover-title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  letter-spacing: 1px;
+  margin: 0 0 1.5rem 0;
+  background: linear-gradient(135deg, #e0e0e0 0%, #d0d0d0 100%);
+  padding: 1rem 2rem;
+  margin: -2rem -2rem 1.5rem -2rem;
+}
+
+.article-headline {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+  color: white;
+}
+
+.article-subtext {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  color: white;
+  opacity: 0.95;
+}
+
+/* Video Gallery Section */
+.video-gallery {
+  background-color: #f8f8f8;
+  padding: 2rem 0;
+}
+
+.video-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.video-item {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.video-item:hover {
+  transform: translateY(-4px);
+}
+
+.video-thumbnail {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.video-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%);
+  transition: filter 0.3s;
+}
+
+.video-item:hover .video-thumbnail img {
+  filter: grayscale(0%);
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.video-item:hover .play-button {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.video-progress {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 4px;
+  background: #e0e0e0;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #8b1538;
+  border-radius: 2px;
+  transition: width 0.3s;
+}
+
+.progress-time {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 600;
+}
+
+/* Copyright Section */
+.copyright-section {
+  background-color: #333;
+  color: white;
+  padding: 1rem 0;
+}
+
+.copyright-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.copyright-container p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.copyright-container a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.copyright-container a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .discover-content {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .met-gala-image {
+    width: 100%;
+    height: 200px;
+  }
+
+  .discover-title {
+    font-size: 1.8rem;
+    margin: -2rem -2rem 1rem -2rem;
+  }
+
+  .video-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .discover-title {
+    font-size: 1.5rem;
+  }
+
+  .discover-article-box {
+    padding: 1.5rem;
+  }
+
+  .article-headline {
+    font-size: 1.1rem;
+  }
+}
+
+.subtext {
+  text-align: center;
+  color: rgb(109, 105, 105);
+  align-items: center;
+}
+
+/* Custom styles for Inter font */
+body {
+  font-family: Garamond, serif; /* Using Inter font as requested */
+}
+
+/* Hide the default disclosure triangle/arrow for <summary> */
+summary::-webkit-details-marker {
+  display: none;
+}
+summary::marker {
+  display: none;
+}
+
+/* Style for the content wrapper inside <details> */
+.content-wrapper {
+  /* Smooth transitions for max-height, opacity, and padding */
+  transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, padding 0.4s ease-in-out;
+  overflow: hidden; /* Hides content when max-height is 0 */
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+  backdrop-filter: blur(5px); /* Optional: adds a blur effect behind the list */
+  margin-top: 1rem; /* Space between button and list */
+  border-radius: 0.75rem; /* Tailwind's rounded-xl */
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); /* Tailwind's shadow-2xl */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Tailwind's border-white border-opacity-30 */
+}
+
+/* Initial state when <details> is closed */
+details:not([open]) .content-wrapper {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0; /* Ensure no margin when hidden */
+}
+
+/* State when <details> is open */
+details[open] .content-wrapper {
+  max-height: 250px; /* Adjust as needed to accommodate your list content */
+  opacity: 1;
+  padding-top: 1rem; /* Tailwind's pt-4 */
+  padding-bottom: 1rem; /* Tailwind's pb-4 */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .sidebar-column,
+  .main-content-column,
+  .right-column {
+    float: none; /* Remove floats */
+    width: 100%; /* Make them full width */
+    margin-bottom: 20px; /* Add vertical space when stacked */
+    margin-right: 0;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: 1fr; /* 1 column on very small screens */
+  }
+}
+/* Custom styles for smooth transition and Inter font */
+body {
+  font-family: "Inter", sans-serif;
+}
+.list-container {
+  /* Smooth transitions for max-height, opacity, and padding */
+  transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out, padding 0.4s ease-in-out;
+  overflow: hidden; /* Hides content when max-height is 0 */
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+  backdrop-filter: blur(5px); /* Optional: adds a blur effect behind the list */
+}
+.list-hidden {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0; /* Ensure no margin when hidden */
+}
+.list-visible {
+  max-height: 250px; /* Adjust as needed to accommodate your list content */
+  opacity: 1;
+  padding-top: 1rem; /* Tailwind's pt-4 */
+  padding-bottom: 1rem; /* Tailwind's pb-4 */
+  margin-top: 1rem; /* Space between button and list */
+}
+
+body {
+  font-family: "Inter", sans-serif; /* Using Inter font as requested */
+  margin: 1px;
+  padding: 0px;
+  line-height: 1.25;
+  min-height: 5px; /* Full viewport height */
+  background-color: #f0f2f5; /* Light background */
+}
+
+/* Container for the navigation */
+.nav-container {
+  display: flex; /* Enable Flexbox for horizontal alignment */
+  flex-wrap: wrap; /* Allow items to wrap to the next line on smaller screens */
+  gap: 40px; /* Space between navigation items */
+  background-color: #ffffff; /* White background for the nav bar */
+  padding: 5px 30px;
+  border-radius: 12px; /* Rounded corners for the nav bar */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  justify-content: center; /* Center items horizontally within the container */
+  align-items: center; /* Center items vertically */
+}
+
+.search-form {
+  display: flex;
+  justify-content: flex-end; /* aligns all form content to the right */
+  align-items: center; /* vertically center input and button */
+  gap: 10px;
+} /* optional: space between input and button */
+
+/* Styling for each navigation link/button (now just wraps the image) */
+.nav-link {
+  display: block; /* Make it a block element to contain the image */
+  text-decoration: none; /* Remove underline from links */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth hover effect */
+  border-radius: 8px; /* Apply border-radius for hover effect */
+}
+
+.nav-link:hover {
+  transform: translateY(-3px); /* Lift effect on hover */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
+
+/* Styling for the images within the navigation links */
+.nav-image {
+  width: 40px; /* Fixed width for the image */
+  height: 40px; /* Fixed height for the image */
+  object-fit: contain; /* Ensure image scales properly without cropping */
+  border-radius: 8px; /* Rounded corners for images */
+  display: block; /* Ensure image behaves as a block within the link */
+}
+
+/* Fallback for broken images */
+.nav-image[src="/placeholder.svg"] {
+  display: none; /* Hide broken image icon */
+}
+.nav-image[src="/placeholder.svg"] + .image-fallback-text {
+  display: block; /* Show fallback text */
+  color: #cc0000;
+  font-size: 0.9em;
+  text-align: center;
+  width: 70px; /* Match image width */
+}
+
+.image-fallback-text {
+  display: none; /* Hidden by default */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 640px) {
+  .nav-container {
+    flex-direction: column; /* Stack buttons vertically on small screens */
+    padding: 15px;
+    width: 90%; /* Occupy more width on small screens */
+  }
+  .nav-link {
+    width: auto; /* Allow link to size based on image */
+    margin-bottom: 15px; /* Add vertical space between stacked buttons */
+  }
+  .nav-image {
+    width: 60px; /* Slightly smaller images on mobile */
+    height: 60px;
+  }
+  .nav-image[src="/placeholder.svg"] + .image-fallback-text {
+    width: 60px; /* Match mobile image width */
+  }
+}
+
+body {
+  font-family: "Inter", sans-serif; /* Using Inter font as requested */
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Full viewport height */
+  background-color: #f0f2f5; /* Light background for the page */
+}
+
+/* Container for the navigation buttons */
+.nav-container-words {
+  display: flex; /* Enable Flexbox for horizontal alignment */
+  flex-wrap: wrap; /* Allow buttons to wrap to the next line on smaller screens */
+  gap: 50px; /* Space between navigation buttons */
+  background-color: transparent; /* Changed to transparent */
+  padding: 10px 10px;
+  border-radius: 12px; /* Rounded corners for the nav bar */
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); Removed shadow for the container */
+  justify-content: center; /* Center items horizontally within the container */
+  align-items: center; /* Center items vertically */
+  max-width: 90%; /* Limit width for larger screens */
+}
+
+/* Styling for each navigation button */
+.nav-button-word {
+  display: block; /* Make it a block element */
+  text-decoration: none; /* Remove underline from links */
+  color: #333333; /* Dark grey font color */
+  background-color: #f0f2f5; /* Changed to match body background color */
+  padding: 10px 20px;
+  border-radius: 8px; /* Rounded corners for buttons */
+  border: none; /* Removed border */
+  font-weight: 600;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.2s
+    ease-in-out; /* Smooth hover effect */
+  text-align: center;
+  white-space: nowrap; /* Prevent text from wrapping inside the button */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for individual buttons */
+}
+
+.nav-button-word:hover {
+  background-color: #530306; /* Black background on hover */
+  color: #ffffff; /* White text on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .nav-container-words {
+    flex-direction: column; /* Stack buttons vertically on small screens */
+    padding: 15px;
+    width: 90%; /* Occupy more width on small screens */
+  }
+  .nav-button-word {
+    width: 100%; /* Make each button full width when stacked */
+    margin-bottom: 10px; /* Add vertical space between stacked buttons */
+  }
+}
+
+.slider-container {
+  width: 100vw; /* Width of the visible slider area */
+  height: 450px; /* Height of the visible slider area */
+  overflow: hidden; /* Hides images outside the view */
+  border: 0px solid #555;
+  position: relative;
+  margin: 0; /* Optional: remove default margin */
+  left: 50%;
+  transform: translateX(-50%); /* Optional: center if needed */
+  box-shadow: 0 0 25px 5px rgba(139, 71, 71, 0.7);
+}
+
+.slider-wrapper {
+  display: flex; /* Arranges images in a row */
+  width: 100%; /* 100% per image * number of images (4 images * 100% = 400%) */
+  height: 100%;
+  animation: slideImages 15s infinite alternate ease-in-out; /* Adjust time based on number of images */
+}
+
+.slider-wrapper img {
+  width: 100%; /* Each image takes 100% of the slider-container width */
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0; /* Prevents images from shrinking */
+}
+
+@keyframes slideImages {
+  0% {
+    transform: translateX(0); /* Show first image */
+  }
+  25% {
+    transform: translateX(-100%); /* Show second image (slides left by 100% of container width) */
+  }
+  50% {
+    transform: translateX(-200%); /* Show third image */
+  }
+  75% {
+    transform: translateX(-300%); /* Show fourth image */
+  }
+  100% {
+    transform: translateX(0); /* Back to first image, or you can keep it at the last if not using alternate */
+  }
+}
+
+.header-image {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%; /* Responsive */
+  height: auto;
+}
+
+/* Styling for the text column */
+.text-column {
+  flex: 1 1 0; /* Allow text column to grow and take available space */
+  padding: 1.5rem 1rem 1.5rem 2rem; /* Padding inside the text column */
+  background-color: transparent; /* Changed to transparent */
+  border-radius: 0.75rem; /* Rounded corners */
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); Removed shadow */
+  display: flex; /* Use flex for internal content alignment */
+  flex-direction: column;
+  justify-content: center; /* Center text vertically */
+  align-items: flex-start; /* Align text to the start horizontally */
+  text-align: left; /* Ensure text is left-aligned */
+  margin-bottom: 0rem; /* Margin below text on small screens */
+}
+
+/* Styling for the image column */
+.image-column {
+  flex-shrink: 1 1 0; /* Prevent image from shrinking too much */
+  width: 100%; /* Full width on small screens */
+  height: 400px;
+  max-width: 100%; /* Ensure it doesn't overflow */
+  object-fit: cover;
+  border-radius: 0.75rem; /* Rounded corners for the image container */
+  overflow: hidden; /* Hide parts of the image that might overflow due to border-radius */
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); Removed shadow */
+  display: flex; /* Use flex to center the image */
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem 0 1rem;
+  background: transparent;
+  flex-direction: column;
+  column-gap: 20px;
+}
+
+.image-column img {
+  width: 100%; /* Image fills its container */
+  height: 100%; /* Maintain aspect ratio */
+  display: block; /* Remove extra space below image */
+  object-fit: cover; /* Cover the container while maintaining aspect ratio */
+  border-radius: 0.75rem;
+}
+
+.columns-flex {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 2rem; /* Optional: space between columns */
+}
+
+.learn-more {
+  border: none;
+  background-color: transparent; /* Transparent background */
+}
+
+/* Responsive styles for larger screens (e.g., tablets and desktops) */
+@media (min-width: 768px) {
+  body {
+    flex-direction: row; /* Arrange items in a row on larger screens */
+    padding: 0rem; /* Add some padding around the content */
+    gap: 2rem; /* Space between the text and image columns */
+  }
+}
+
+/* Styling for the text column */
+.text-column {
+  flex: 6 1 0; /* Allow text column to grow and take available space */
+  min-width: 0;
+  padding: 1.5rem; /* Padding inside the text column */
+  background-color: transparent; /* Changed to transparent */
+  border-radius: 0.75rem; /* Rounded corners */
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); Removed shadow */
+  display: flex; /* Use flex for internal content alignment */
+  flex-direction: column;
+  justify-content: center; /* Center text vertically */
+  align-items: flex-start; /* Align text to the start horizontally */
+  text-align: left; /* Ensure text is left-aligned */
+  margin-bottom: 1.5rem; /* Margin below text on small screens */
+  padding-left: 10rem;
+}
+
+.text-column h1 {
+  font-size: 2.5rem; /* Make headings larger */
+}
+
+.text-column h4 {
+  font-size: 1.5rem; /* Make headings larger */
+}
+
+.text-column p {
+  font-size: 1.25rem; /* Make paragraph text larger */
+}
+
+.text-column button {
+  font-size: 1.1rem; /* Make button text larger if desired */
+}
+
+@media (max-width: 768px) {
+  .text-column {
+    margin-bottom: 0; /* Remove margin on larger screens */
+    padding-left: 1rem !important; /* Reduce left padding */
+    padding-right: 1rem !important; /* Add right padding if needed */
+  }
+}
+
+/* Styling for the image column */
+.image-column {
+  flex-shrink: 4 1 0; /* Prevent image from shrinking too much */
+  width: 100%; /* Full width on small screens */
+  max-width: 100%; /* Ensure it doesn't overflow */
+  border-radius: 0.75rem; /* Rounded corners for the image container */
+  overflow: hidden; /* Hide parts of the image that might overflow due to border-radius */
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); Removed shadow */
+  display: flex; /* Use flex to center the image */
+  justify-content: center;
+  align-items: center;
+  padding-right: 10rem;
+  min-width: 0;
+
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  .image-column {
+    width: 50%; /* Take 50% width on larger screens */
+    max-width: 400px; /* Max width for the image column */
+  }
+}
+
+.image-column img {
+  width: auto; /* Image fills its container */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Remove extra space below image */
+  object-fit: cover; /* Cover the container while maintaining aspect ratio */
+  border-radius: 0.75rem !important; /* Rounded corners for the image */
+  aspect-ratio: 5 / 4; /* Sets the container to 4:3 ratio */
+  padding-right: 1rem;
+}
+
+/* Responsive styles for larger screens (e.g., tablets and desktops) */
+@media (min-width: 768px) {
+  body {
+    flex-direction: row; /* Arrange items in a row on larger screens */
+    flex-wrap: wrap; /* Allow columns to wrap if needed, though not expected here */
+    justify-content: center; /* Center the columns horizontally */
+    align-items: flex-start; /* Align items to the top */
+    padding: 2rem; /* More padding on larger screens */
+    gap: 2rem; /* More space between columns on larger screens */
+  }
+}
+
+/* Styling for each column item */
+.column-item {
+  flex: 1 1 100%; /* Default: take full width on small screens */
+  max-width: 100%; /* Ensure it doesn't overflow */
+  background-color: transparent; /* Changed to transparent */
+  border-radius: 0.75rem; /* Rounded corners */
+  overflow: hidden; /* Hide parts of the image that might overflow due to border-radius */
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); Removed shadow */
+  display: flex; /* Use flex for internal content (image and text) */
+  flex-direction: column; /* Stack image and text vertically */
+  align-items: center; /* Center content horizontally within the column */
+  text-align: center; /* Center text */
+  transition: transform 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.column-item:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+}
+
+@media (min-width: 768px) {
+  .column-item {
+    flex: 1 1 calc(33.333% - 2rem); /* Take roughly 1/3 width, accounting for gap */
+    max-width: calc(33.333% - 2rem); /* Ensure it fits 3 in a row */
+  }
+}
+
+@media (min-width: 1024px) {
+  .column-item {
+    flex: 1 1 calc(33.333% - 2rem); /* Maintain 1/3 width */
+    max-width: 350px; /* Max width for each column on very large screens */
+  }
+}
+
+.column-item img {
+  width: 100%; /* Image fills its container */
+  aspect-ratio: 1 / 1; /* Make the image square */
+  height: auto; /* Allow height to adjust based on aspect-ratio */
+  object-fit: cover; /* Cover the area, cropping if necessary */
+  border-top-left-radius: 0.75rem; /* Match container border radius */
+  border-top-right-radius: 0.75rem; /* Match container border radius */
+}
+
+.column-text-content {
+  padding: 1.5rem; /* Padding inside the text area */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center text content */
+  text-align: center; /* Ensure text is centered */
+}
+
+.column-text-content h2 {
+  font-size: 1.25rem; /* Smaller heading: changed from 1.5rem to 1.25rem */
+  font-weight: bold;
+  margin-bottom: 0rem;
+  color: #2d3748; /* Darker heading color */
+}
+
+.column-text-content p {
+  font-size: 0.9rem; /* Smaller paragraph text: changed from 1rem to 0.9rem */
+  line-height: 1.5; /* Adjusted line height slightly for smaller text */
+  color: #4a5568; /* Slightly lighter text color */
+  margin-bottom: 0;
+  font-size: 1.25rem;
+}
+
+.column-text-content button {
+  padding: 0.75rem 1.5rem;
+  background-color: transparent; /* Blue button */
+  color: #530306;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+  border-color: transparent;
+}
+
+.column-text-content button:hover {
+  background-color: rgba(83, 34, 46, 0.25); /* Darker blue on hover */
+}
+
+.column-item:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18), 0 1.5px 4px rgba(0, 0, 0, 0.12); /* Add shadow */
+}
+
+.columns-flex {
+  display: flex;
+  flex-direction: row;
+  gap: 10rem; /* Adjust the value for more or less space */
+  justify-content: center; /* Center columns horizontally */
+  align-items: flex-start; /* Optional: align columns to the top */
+  margin-top: 3rem;
+}
+
+.text-4xl {
+  color: #530306;
+}
+
+/* UNSPOKEN WORDS SECTION STYLES */
+.unspoken-words-section {
+  background-color: #f8f8f8;
+  padding: 2rem 1rem;
+  margin-top: 2rem;
+}
+
+.unspoken-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.unspoken-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.unspoken-header h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.unspoken-header p {
+  font-size: 1rem;
+  color: #666;
+  margin: 0;
+}
+
+.unspoken-main {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.submit-section {
+  flex: 1;
+}
+
+.submit-section h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.message-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.message-form textarea {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+}
+
+.message-form input[type="text"] {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+.message-form input[type="color"] {
+  width: 50px;
+  height: 40px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.message-form button {
+  padding: 0.75rem 1.5rem;
+  background-color: #530306;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.message-form button:hover {
+  background-color: #a0174a;
+}
+
+.messages-section {
+  flex: 1;
+}
+
+.messages-section h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.message {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.pink-message {
+  background-color: #d39a9a;
+  border-left: 4px solid #530306;
+}
+
+.blue-message {
+  background-color: #8898ce;
+  border-left: 4px solid #0e0d66;
+}
+
+.message p {
+  margin: 0 0 0.5rem 0;
+  font-style: italic;
+  color: #333;
+}
+
+.message span {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 600;
+}
+
+.unspoken-footer {
+  text-align: center;
+  padding-top: 1rem;
+  border-top: 1px solid #ddd;
+}
+
+.unspoken-footer p {
+  margin: 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Responsive Design for Unspoken Words */
+@media (max-width: 768px) {
+  .unspoken-main {
+    flex-direction: column;
+  }
+
+  .unspoken-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .submit-section h2,
+  .messages-section h2 {
+    font-size: 1.25rem;
+  }
+}
+
+/* Footer specific styles */
+.site-footer {
+  background-color: #1a1a1a; /* Dark background color */
+  color: #ffffff; /* White text color */
+  text-align: center; /* Center the text */
+  padding: 20px 0; /* Add some vertical padding */
+  font-size: 14px; /* Adjust font size as needed */
+  width: 100%; /* Ensure it spans the full width */
+}
+
+footer {
+  background: #220f09;
+  background: -moz-linear-gradient(top, #220f09 0%, #710000 59%, #010000 100%);
+  background: -webkit-linear-gradient(top, #220f09 0%, #710000 59%, #010000 100%);
+  background: linear-gradient(to bottom, #220f09 0%, #710000 59%, #010000 100%);
+  text-align: center;
+  padding: 40px 20px;
+  font-family: "Arial", sans-serif;
+}
+
+.logo {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 40px;
+  letter-spacing: 6px;
+  word-spacing: 6px;
+  text-shadow: 0 0 10px #ffffff, 2px 2px 2px rgba(206, 0, 0, 0);
+  color: #ffffff;
+  font-weight: normal;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: small-caps;
+  text-transform: none;
+}
+
+.footer-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-btn {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 14px;
+  border: 2px solid #fff;
+  padding: 10px 16px;
+  display: inline-block;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.footer-btn:hover {
+  background-color: #fff;
+  color: #b30000;
+}
+
+.arrow {
+  margin-left: 6px;
+  font-size: 12px;
+}
+.footer-link a {
+  color: #ffffff; /* white text */
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.footer-link a:hover {
+  color: #ddd; /* optional lighter hover effect */
+}
+
+.arrow {
+  color: #ffffff; /* ensures the ▼ arrow is also white */
+  font-size: 12px;
+  margin-left: 6px;
+}
+
+.footer-link a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 14px;
+  position: relative;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.footer-link a:hover {
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+.arrow {
+  color: #ffffff;
+  font-size: 12px;
+  margin-left: 6px;
+  transition: text-shadow 0.3s ease;
+}
+
+.footer-link a:hover .arrow {
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+}
+
+/* Optional pulsing animation */
+@keyframes pulse {
+  0% {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  }
+  100% {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
+  }
+}
